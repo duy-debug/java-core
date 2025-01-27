@@ -1,5 +1,6 @@
 public class ViDu {
     public static void main(String[] args) {
+<<<<<<< HEAD
         for (int i = 0; i < 10; i++) {
             System.out.println("Tôi xin lỗi!" +i);
         }
@@ -16,3 +17,8 @@ public class ViDu {
     }
 }
 
+=======
+        System.out.printf("Hello, world!");
+    }
+}
+>>>>>>> cc0b746bd75247dcd4540c0a00d9e10fded0d468
