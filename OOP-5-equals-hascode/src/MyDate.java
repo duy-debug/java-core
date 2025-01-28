@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import java.util.Objects;
 
 public class MyDate {
@@ -67,3 +68,8 @@ public class MyDate {
         return Objects.hash(day, month, year);
     }
 }
+=======
+public class MyDate {
+    
+}
+>>>>>>> c910afeaad25e8754fbb5f4dfa2fcfedfda6c00f
