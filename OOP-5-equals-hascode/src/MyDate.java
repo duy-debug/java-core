@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class MyDate {
     private int day;
     private int month;
@@ -51,5 +53,17 @@ public class MyDate {
     @Override
     public String toString() {
         return this.day + "/" + this.month + "/" + this.year;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || this.getClass() != o.getClass()) return false;
+        MyDate myDate = (MyDate) o;
+        return day == myDate.day && month == myDate.month && year == myDate.year;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(day, month, year);
     }
 }
