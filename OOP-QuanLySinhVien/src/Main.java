@@ -12,5 +12,7 @@ public class Main {
     System.out.println("Sinh viên 1 thi: " + sinhvien1.KiemTraThiDat());
     System.out.println("Sinh viên 2 thi: " + sinhvien2.KiemTraThiDat());
     System.out.println("Kiểm tra cùng ngày sinh:: " + sinhvien1.KiemTraNgaySinh(sinhvien2));
+    System.out.println("S");
+    NgaySinh ngay3 = new NgaySinh(30,10,2005);
   }
 }
