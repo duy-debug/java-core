@@ -1,6 +1,15 @@
-# Lập trình Java Core
+# Lập trình Java
 
-Dự án này chứa lộ trình học lập trình Java từ cơ bản đến nâng cao, giúp người học nắm vững nền tảng ngôn ngữ Java thông qua các ví dụ thực tiễn và bài tập dự án.
+Java là một trong những ngôn ngữ lập trình phổ biến nhất thế giới, được phát triển bởi Sun Microsystems (hiện thuộc Oracle) vào năm 1995. Với khẩu hiệu nổi tiếng "Write Once, Run Anywhere" (Viết một lần, chạy mọi nơi), Java đã chứng minh được sức mạnh và tính linh hoạt vượt trội trong nhiều lĩnh vực lập trình.
+
+Các đặc điểm nổi bật của Java:
+- Hướng đối tượng (Object-Oriented): Mọi thành phần trong Java đều được coi là đối tượng, giúp mã nguồn dễ quản lý, bảo trì và tái sử dụng.
+- Độc lập nền tảng: Mã nguồn Java sau khi biên dịch sẽ thành Bytecode, có thể chạy trên bất kỳ hệ điều hành nào có cài đặt JVM (Java Virtual Machine).
+- Bảo mật và Mạnh mẽ: Java loại bỏ việc thao tác trực tiếp với bộ nhớ (con trỏ), thay vào đó là cơ chế quản lý bộ nhớ tự động (Garbage Collection) và kiểm soát lỗi chặt chẽ.
+- Hiệu suất cao: Với trình biên dịch JIT (Just-In-Time), Java đạt được tốc độ thực thi tiệm cận với các ngôn ngữ lập trình hệ thống.
+
+Dự án này được xây dựng như một lộ trình học tập toàn diện, dẫn dắt bạn từ những khái niệm cơ bản nhất đến các kỹ thuật lập trình hướng đối tượng chuyên sâu và cấu trúc dữ liệu phức tạp.
+
 
 ## Các chủ đề chính
 
@@ -42,41 +51,41 @@ Cách quản lý tập hợp dữ liệu đơn giản, xử lý toán học và 
 | 05 | [Time-Date-Dateformat-Calendar](./step_02_array/Time-Date-Dateformat-Calendar) | Quản lý và định dạng thời gian. |
 | 06 | [MiniGame-Random-Numberformat](./step_02_array/MiniGame-Random-Numberformat) | Bài tập thực hành tổng hợp. |
 
-### [Step 03: Hướng đối tượng cơ bản](./step_03_basic/README.md)
+### [Step 03: Hướng đối tượng cơ bản](./step_03_oop_basic/README.md)
 Làm quen với các khái niệm Class, Object, Encapsulation và các dự án thực tế.
 
 | STT | Tên bài | Mô tả |
 |:---:|:---|:---|
-| 01 | [OOP-1-Class](./step_03_basic/OOP-1-Class) | Khởi tạo lớp và đối tượng. |
-| 02 | [OOP-2-HoaDonCafe](./step_03_basic/OOP-2-HoaDonCafe) | Bài tập thực hành OOP đầu tiên. |
-| 03 | [OOP-3-GET-SET](./step_03_basic/OOP-3-GET-SET) | Tính đóng gói với Getter và Setter. |
-| 04 | [OOP-4-ToString](./step_03_basic/OOP-4-ToString) | Phương thức toString trong Object. |
-| 05 | [OOP-5-equals-hascode](./step_03_basic/OOP-5-equals-hascode) | So sánh đối tượng với equals và hashCode. |
-| 06 | [OOP-QuanLySach](./step_03_basic/OOP-QuanLySach) | Dự án quản lý sách. |
-| 07 | [OOP-QuanLyMayTinh](./step_03_basic/OOP-QuanLyMayTinh) | Dự án quản lý máy tính. |
-| 08 | [OOP-QuanLyBoPhim](./step_03_basic/OOP-QuanLyBoPhim) | Dự án quản lý bộ phim. |
-| 09 | [OOP-QuanLySinhVien](./step_03_basic/OOP-QuanLySinhVien) | Dự án quản lý sinh viên. |
+| 01 | [OOP-1-Class](./step_03_oop_basic/OOP-1-Class) | Khởi tạo lớp và đối tượng. |
+| 02 | [OOP-2-HoaDonCafe](./step_03_oop_basic/OOP-2-HoaDonCafe) | Bài tập thực hành OOP đầu tiên. |
+| 03 | [OOP-3-GET-SET](./step_03_oop_basic/OOP-3-GET-SET) | Tính đóng gói với Getter và Setter. |
+| 04 | [OOP-4-ToString](./step_03_oop_basic/OOP-4-ToString) | Phương thức toString trong Object. |
+| 05 | [OOP-5-equals-hascode](./step_03_oop_basic/OOP-5-equals-hascode) | So sánh đối tượng với equals và hashCode. |
+| 06 | [OOP-QuanLySach](./step_03_oop_basic/OOP-QuanLySach) | Dự án quản lý sách. |
+| 07 | [OOP-QuanLyMayTinh](./step_03_oop_basic/OOP-QuanLyMayTinh) | Dự án quản lý máy tính. |
+| 08 | [OOP-QuanLyBoPhim](./step_03_oop_basic/OOP-QuanLyBoPhim) | Dự án quản lý bộ phim. |
+| 09 | [OOP-QuanLySinhVien](./step_03_oop_basic/OOP-QuanLySinhVien) | Dự án quản lý sinh viên. |
 
-### [Step 04: Hướng đối tượng nâng cao](./step_04_advanced/README.md)
+### [Step 04: Hướng đối tượng nâng cao](./step_04_oop_advanced/README.md)
 Đi sâu vào các tính chất của OOP: Kế thừa, Đa hình, Trừu tượng và xử lý Chuỗi (String).
 
 | STT | Tên bài | Mô tả |
 |:---:|:---|:---|
-| 01 | [OOP-Package](./step_04_advanced/OOP-Package) | Quản lý mã nguồn với Package. |
-| 02 | [OOP-Public-Protected-Private](./step_04_advanced/OOP-Public-Protected-Private) | Phạm vi truy cập Access Modifiers. |
-| 03 | [OOP-Overloading](./step_04_advanced/OOP-Overloading) | Nạp chồng phương thức. |
-| 04 | [OOP-Inheritance](./step_04_advanced/OOP-Inheritance) | Tính kế thừa trong Java. |
-| 05 | [OOP-Interihance-TT](./step_04_advanced/OOP-Interihance-TT) | Thực hành kế thừa. |
-| 06 | [OOP-Overriding](./step_04_advanced/OOP-Overriding) | Ghi đè phương thức. |
-| 07 | [OOP-Abstract](./step_04_advanced/OOP-Abstract) | Lớp trừu tượng Abstract class. |
-| 08 | [OOP-Interface](./step_04_advanced/OOP-Interface) | Giao tiếp Interface. |
-| 09 | [OOP-Abstract-Interihance](./step_04_advanced/OOP-Abstract-Interihance) | Kết hợp Abstract và Inheritance. |
-| 10 | [OOP-String](./step_04_advanced/OOP-String) | Xử lý chuỗi cơ bản. |
-| 11 | [OOP-String1](./step_04_advanced/OOP-String1) | Các phương thức so sánh chuỗi. |
-| 12 | [OOP-String2](./step_04_advanced/OOP-String2) | Các phương thức tìm kiếm chuỗi. |
-| 13 | [OOP-String3](./step_04_advanced/OOP-String3) | Cắt và nối chuỗi. |
-| 14 | [Phan-Tach-Chuoi-Thanh-Mang](./step_04_advanced/Phan-Tach-Chuoi-Thanh-Mang) | Sử dụng split để tách chuỗi. |
-| 15 | [Enum](./step_04_advanced/Enum) | Kiểu dữ liệu liệt kê Enum. |
+| 01 | [OOP-Package](./step_04_oop_advanced/OOP-Package) | Quản lý mã nguồn với Package. |
+| 02 | [OOP-Public-Protected-Private](./step_04_oop_advanced/OOP-Public-Protected-Private) | Phạm vi truy cập Access Modifiers. |
+| 03 | [OOP-Overloading](./step_04_oop_advanced/OOP-Overloading) | Nạp chồng phương thức. |
+| 04 | [OOP-Inheritance](./step_04_oop_advanced/OOP-Inheritance) | Tính kế thừa trong Java. |
+| 05 | [OOP-Interihance-TT](./step_04_oop_advanced/OOP-Interihance-TT) | Thực hành kế thừa. |
+| 06 | [OOP-Overriding](./step_04_oop_advanced/OOP-Overriding) | Ghi đè phương thức. |
+| 07 | [OOP-Abstract](./step_04_oop_advanced/OOP-Abstract) | Lớp trừu tượng Abstract class. |
+| 08 | [OOP-Interface](./step_04_oop_advanced/OOP-Interface) | Giao tiếp Interface. |
+| 09 | [OOP-Abstract-Interihance](./step_04_oop_advanced/OOP-Abstract-Interihance) | Kết hợp Abstract và Inheritance. |
+| 10 | [OOP-String](./step_04_oop_advanced/OOP-String) | Xử lý chuỗi cơ bản. |
+| 11 | [OOP-String1](./step_04_oop_advanced/OOP-String1) | Các phương thức so sánh chuỗi. |
+| 12 | [OOP-String2](./step_04_oop_advanced/OOP-String2) | Các phương thức tìm kiếm chuỗi. |
+| 13 | [OOP-String3](./step_04_oop_advanced/OOP-String3) | Cắt và noi chuỗi. |
+| 14 | [Phan-Tach-Chuoi-Thanh-Mang](./step_04_oop_advanced/Phan-Tach-Chuoi-Thanh-Mang) | Sử dụng split để tách chuỗi. |
+| 15 | [Enum](./step_04_oop_advanced/Enum) | Kiểu dữ liệu liệt kê Enum. |
 
 ### [Step 05: Collection và Generic](./step_05_collection/README.md)
 Cấu trúc dữ liệu nâng cao như ArrayList, Stack, Queue, Set và kỹ thuật Generic.
@@ -119,8 +128,8 @@ Mỗi thư mục nhỏ trong các `step_xx` được thiết kế như một Pro
 
 Để học tập hiệu quả, bạn có thể tham khảo các nguồn uy tín sau:
 
-1. **W3Schools Java Tutorial**: Nguồn học cơ bản, ngắn gọn, dễ hiểu. [Link tham khảo](https://www.w3schools.com/java/)
-2. **GeeksforGeeks Java**: Chuyên sâu về thuật toán và cấu trúc dữ liệu trong Java. [Link tham khảo](https://www.geeksforgeeks.org/java/)
-3. **Java Programming Language (Oracle Docs)**: Tài liệu chính thống từ nhà phát hành Java. [Link tham khảo](https://docs.oracle.com/javase/tutorial/)
-4. **Java Design Patterns**: Nếu bạn muốn học nâng cao về thiết kế hệ thống. [Link tham khảo](https://refactoring.guru/design-patterns/java)
+1. **W3Schools Java Tutorial**: Nguồn học cơ bản, ngắn gọn, dễ hiểu. https://www.w3schools.com/java/
+2. **GeeksforGeeks Java**: Chuyên sâu về thuật toán và cấu trúc dữ liệu trong Java. https://www.geeksforgeeks.org/java/
+3. **Java Programming Language (Oracle Docs)**: Tài liệu chính thống từ nhà phát hành Java. https://docs.oracle.com/javase/tutorial/
+4. **Java Design Patterns**: Nếu bạn muốn học nâng cao về thiết kế hệ thống. https://refactoring.guru/design-patterns/java
 5. **Kênh Youtube (Tiếng Việt)**: Có thể tìm các khóa học của TITV hoặc các thầy cô trên Youtube để nghe giảng trực quan hơn.

@@ -1,91 +1,114 @@
 # Step 01: Nền tảng lập trình Java (Basic)
 
-Chương này cung cấp kiến thức nền tảng toàn diện và chi tiết nhất về ngôn ngữ lập trình Java, từ kiến trúc hệ thống đến các cấu trúc dữ liệu và điều khiển cơ bản.
+Chương này là bước khởi đầu quan trọng, cung cấp cái nhìn toàn diện và sâu sắc nhất về ngôn ngữ Java. Chúng ta sẽ đi từ cấu trúc hệ thống tầng thấp đến các cú pháp lập trình cơ bản mà mọi kỹ sư Java đều phải nằm lòng.
 
-## Lý thuyết chuyên sâu
+## Lý thuyết chuyên sâu và Đầy đủ
 
-### 1. Kiến trúc Java và Cơ chế hoạt động
-- **JVM (Java Virtual Machine)**: Máy ảo Java, nơi thực thi mã Bytecode. Giúp Java có tính độc lập nền tảng.
-- **JRE (Java Runtime Environment)**: Bao gồm JVM và các thư viện cần thiết để chạy ứng dụng Java.
-- **JDK (Java Development Kit)**: Công cụ đầy đủ cho lập trình viên (bao gồm JRE và các công cụ như `javac`).
-- **Cơ chế**: Source Code (`.java`) --[Compiler]--> Bytecode (`.class`) --[JVM]--> Machine Code.
+### 1. Hệ sinh thái và Kiến trúc Java
+Để hiểu tại sao Java chạy được ở mọi nơi, ta cần phân tích 3 thành phần cốt lõi:
+- **JVM (Java Virtual Machine)**: Là trái tim của Java. Nó không chỉ chạy Bytecode mà còn quản lý bộ nhớ, thực hiện Garbage Collection và tối ưu hóa hiệu năng (JIT Compiler). Mỗi hệ điều hành có một bản JVM riêng, đó là lý do Bytecode (`.class`) có thể chạy xuyên nền tảng.
+- **JRE (Java Runtime Environment)**: Là môi trường thực thi. Nó bao gồm JVM và các thư viện lớp chuẩn (Standard Class Libraries) như `java.lang`, `java.util` để ứng dụng có thể chạy được.
+- **JDK (Java Development Kit)**: Là bộ công cụ dành cho nhà phát triển. Nó bao gồm JRE và các công cụ phát triển như `javac` (trình biên dịch), `jdb` (trình gỡ lỗi), `jar` (đóng gói).
 
-### 2. Biến và Kiểu dữ liệu (Tối đa chi tiết)
-#### a. Kiểu dữ liệu nguyên thủy (Primitive Types)
-| Kiểu | Kích thước | Giá trị mặc định | Khoảng giá trị |
+**Quy trình thực thi**:
+1. Lập trình viên viết mã nguồn trong file `.java`.
+2. `javac` biên dịch file `.java` thành mã Bytecode trong file `.class`.
+3. JVM nạp file `.class` và thông dịch/biên dịch (JIT) thành mã máy của hệ điều hành tương ứng để thực thi.
+
+### 2. Thành phần cơ bản của chương trình Java
+- **Class**: Mọi mã nguồn đều phải nằm trong một Lớp. Tên class chứa hàm `main` phải trùng hoàn toàn với tên file.
+- **Hàm `main`**: `public static void main(String[] args)` là điểm bắt đầu (entry point) của chương trình.
+    - `public`: Cho phép JVM gọi hàm từ bên ngoài lớp.
+    - `static`: Cho phép gọi hàm mà không cần tạo đối tượng của lớp.
+    - `void`: Hàm không trả về giá trị.
+    - `String[] args`: Tham số dòng lệnh được truyền vào dưới dạng mảng chuỗi.
+- **Comments (Ghi chú)**:
+    - `//`: Ghi chú một dòng.
+    - `/* ... */`: Ghi chú nhiều dòng.
+    - `/** ... */`: Javadoc comment, dùng để tạo tài liệu tự động.
+
+### 3. Biến và Kiểu dữ liệu (Toàn diện)
+#### a. Quy tắc đặt tên (Naming Conventions)
+- **Biến/Hành động**: Dùng `camelCase` (vd: `hoVaTen`, `tinhTong`).
+- **Lớp (Class)**: Dùng `PascalCase` (vd: `SinhVien`, `MainController`).
+- **Hằng số**: Dùng `UPPER_CASE` với dấu gạch nối (vd: `MAX_VALUE`, `PI`).
+- **Quy tắc bắt buộc**: Không bắt đầu bằng số, không chứa ký tự đặc biệt (trừ `$` và `_`), không trùng từ khóa của Java.
+
+#### b. Kiểu dữ liệu nguyên thủy (Primitive Types)
+| Kiểu | Byte | Giá trị mặc định | Đặc điểm |
 |:---|:---:|:---:|:---|
-| **byte** | 1 byte | 0 | -128 đến 127 |
-| **short** | 2 bytes | 0 | -32,768 đến 32,767 |
-| **int** | 4 bytes | 0 | -2^31 đến 2^31-1 |
-| **long** | 8 bytes | 0L | -2^63 đến 2^63-1 (Hậu tố 'L') |
-| **float** | 4 bytes | 0.0f | Độ chính xác 6-7 chữ số thập phân (Hậu tố 'f') |
-| **double**| 8 bytes | 0.0d | Độ chính xác 15 chữ số thập phân |
-| **boolean**| 1 bit | false | true hoặc false |
-| **char** | 2 bytes | '\u0000' | Ký tự Unicode (0 đến 65,535) |
+| **byte** | 1 | 0 | Phù hợp cho luồng dữ liệu thô (IO). |
+| **short** | 2 | 0 | Ít dùng trong thực tế hiện đại. |
+| **int** | 4 | 0 | Kiểu mặc định cho các số nguyên. |
+| **long** | 8 | 0L | Dùng cho số rất lớn (vd: ID, timestamp). Cần hậu tố `L`. |
+| **float** | 4 | 0.0f | Độ chính xác đơn. Cần hậu tố `f`. |
+| **double**| 8 | 0.0d | Kiểu mặc định cho số thực. Độ chính xác gấp đôi float. |
+| **boolean**| - | false | Chỉ nhận `true` hoặc `false`. |
+| **char** | 2 | '\u0000' | Lưu 1 ký tự Unicode (dùng dấu nháy đơn `'A'`). |
 
-#### b. Kiểu dữ liệu tham chiếu (Reference Types)
-Lưu trữ địa chỉ của đối tượng trong bộ nhớ Heap. Bao gồm: `String`, `Array`, `Class`, `Interface`.
+#### c. Kiểu dữ liệu tham chiếu (Reference Types)
+- Lưu địa chỉ bộ nhớ trỏ đến đối tượng trên Heap.
+- **String**: Chuỗi ký tự (dùng dấu nháy kép `"Hello"`).
+- **Array**: Tập hợp các phần tử cùng kiểu.
 
-#### c. Ép kiểu (Type Casting)
-- **Nới rộng (Widening)**: Tự động chuyển kiểu nhỏ sang lớn (`int` -> `double`).
-- **Thu hẹp (Narrowing)**: Chuyển kiểu lớn sang nhỏ, phải ép thủ công và có thể mất dữ liệu:
-```java
-double d = 9.78;
-int i = (int) d; // i = 9
-```
+#### d. Hằng số (Constants)
+Sử dụng từ khóa `final`. Biến được khai báo `final` sẽ không thể thay đổi giá trị sau khi gán lần đầu.
 
-### 3. Toán tử và Độ ưu tiên
-- **Toán tử số học**: `+`, `-`, `*`, `/`, `%` (chia lấy dư), `++` (tăng 1), `--` (giảm 1).
-- **Toán tử so sánh**: `==`, `!=`, `>`, `<`, `>=`, `<=`.
-- **Toán tử logic**: 
-    - `&&`: AND (Ngắn mạch - nếu vế đầu sai thì không xét vế sau).
-    - `||`: OR (Ngắn mạch - nếu vế đầu đúng thì không xét vế sau).
-    - `!`: NOT.
-- **Toán tử điều kiện (Ternary)**: `variable = (condition) ? valueTrue : valueFalse;`.
+### 4. Ép kiểu (Type Casting)
+- **Nới rộng (Widening)**: `byte -> short -> char -> int -> long -> float -> double`. Java tự động thực hiện vì không mất dữ liệu.
+- **Thu hẹp (Narrowing)**: `double -> float -> long -> int -> char -> short -> byte`. Phải ép kiểu thủ công: `int a = (int) 5.9;` (kết quả `a = 5`). Cẩn thận vì có thể gây tràn số hoặc mất độ chính xác.
 
-### 4. Nhập xuất dữ liệu với Scanner
-Lớp `Scanner` hỗ trợ đọc từ luồng nhập chuẩn (`System.in`).
-```java
-import java.util.Scanner;
-Scanner sc = new Scanner(System.in);
-int n = sc.nextInt(); // Đọc số nguyên
-String s = sc.nextLine(); // Đọc cả dòng chuỗi
-```
-*Lưu ý*: Sau khi dùng `nextInt()` mà dùng `nextLine()` cần có một lệnh `nextLine()` trống để "nuốt" ký tự xuống dòng thừa.
+### 5. Toán tử (Operators)
+- **Số học**: `+`, `-`, `*`, `/` (chia nguyên), `%` (chia dư), `++`, `--`.
+    - Phân biệt `i++` (dùng rồi mới tăng) và `++i` (tăng rồi mới dùng).
+- **Gán**: `=`, `+=`, `-=`, `*=`, `/=`, `%=`.
+- **So sánh**: `==`, `!=`, `>`, `<`, `>=`, `<=`.
+- **Logic**:
+    - `&&` (AND): Trả về true nếu cả hai vế đúng. Có tính ngắn mạch (nếu vế 1 sai, vế 2 không chạy).
+    - `||` (OR): Trả về true nếu ít nhất một vế đúng. Có tính ngắn mạch (nếu vế 1 đúng, vế 2 không chạy).
+    - `!` (NOT): Đảo ngược giá trị logic.
+- **Toán tử 3 ngôi**: `biến = (điều kiện) ? giá trị1 : giá trị2;`.
 
-### 5. Cấu trúc điều khiển nâng cao
-- **Switch-case**: Từ Java 7 hỗ trợ `String`. Từ Java 12-14 hỗ trợ `Switch Expression`.
-- **Vòng lặp For-each**: Dùng để duyệt mảng hoặc Collection cực kỳ ngắn gọn.
-```java
-for (int x : array) {
-    System.out.println(x);
-}
-```
-- **Break và Continue có nhãn (Labeled)**: Cho phép thoát ra khỏi một vòng lặp cụ thể khi có nhiều vòng lặp lồng nhau.
-```java
-outer: for (...) {
-    inner: for (...) {
-        if (...) break outer; // Thoát hẳn vòng lặp ngoài
-    }
-}
-```
+### 6. Nhập xuất dữ liệu
+- **Xuất (Output)**:
+    - `System.out.print()`: In không xuống dòng.
+    - `System.out.println()`: In và tự động xuống dòng.
+    - `System.out.printf()`: In có định dạng (vd: `%d` cho số nguyên, `%.2f` cho số thực).
+- **Nhập (Input)**: Dùng lớp `Scanner`.
+    - `sc.next()`: Đọc 1 từ (dừng khi gặp khoảng trắng).
+    - `sc.nextLine()`: Đọc cả dòng (xử lý được khoảng trắng).
+    - `sc.nextInt()`, `sc.nextDouble()`: Đọc số tương ứng.
+    - **Mẹo**: Sau khi gọi `nextXXX()` mà gọi `nextLine()`, hãy thêm một lệnh `sc.nextLine()` để xóa bộ nhớ đệm (buffer).
+
+### 7. Cấu trúc điều khiển (Control Flow)
+- **Rẽ nhánh**:
+    - `if-else`: Dùng cho các điều kiện logic.
+    - `switch-case`: Tối ưu khi so sánh giá trị cụ thể. Hỗ trợ `byte, short, char, int, String, Enum`. Cần `break` để thoát khỏi case, nếu không sẽ xảy ra tình trạng "fall-through".
+- **Vòng lặp**:
+    - `for`: Lặp với số lần biết trước.
+    - `while`: Kiểm tra điều kiện trước, lặp sau (có thể không chạy lần nào).
+    - `do-while`: Chạy 1 lần trước, sau đó mới kiểm tra điều kiện (luôn chạy ít nhất 1 lần).
+- **Lệnh điều hướng**:
+    - `break`: Thoát hẳn khỏi vòng lặp/switch.
+    - `continue`: Bỏ qua các lệnh còn lại trong lần lặp này và bắt đầu lần lặp kế tiếp.
 
 ## Danh sách bài học
 
 | STT | Tên bài | Mô tả chi tiết | Tham khảo |
 |:---:|:---|:---|:---|
-| 01 | [Hello](./Hello) | Cấu trúc class, hàm main và in dữ liệu ra console. | [W3Schools](https://www.w3schools.com/java/java_getstarted.asp) |
-| 02 | [variable](./variable) | Khai báo biến, hằng số và quy tắc đặt tên camelCase. | [W3Schools](https://www.w3schools.com/java/java_variables.asp) |
-| 03 | [DataType](./DataType) | Phân biệt kiểu Primitive vs Reference, cơ chế ép kiểu. | [GeeksforGeeks](https://www.geeksforgeeks.org/data-types-in-java/) |
-| 04 | [Const](./Const) | Cách dùng final và static final cho biến toàn cục. | [W3Schools](https://www.w3schools.com/java/java_variables_final.asp) |
-| 05 | [Operator](./Operator) | Toán tử số học, logic và độ ưu tiên thực hiện. | [W3Schools](https://www.w3schools.com/java/java_operators.asp) |
-| 06 | [If-else](./If-else) | Cấu trúc rẽ nhánh đơn, kép và lồng nhau. | [W3Schools](https://www.w3schools.com/java/java_conditions.asp) |
-| 07 | [Switch-Case](./Switch-Case) | Sử dụng switch-case tối ưu và từ khóa break. | [W3Schools](https://www.w3schools.com/java/java_switch.asp) |
-| 08 | [for](./for) | Vòng lặp đếm số lần và kỹ thuật lặp lồng (Nested Loops). | [W3Schools](https://www.w3schools.com/java/java_for_loop.asp) |
-| 09 | [While](./While) | Vòng lặp dựa trên điều kiện và vòng lặp do-while. | [W3Schools](https://www.w3schools.com/java/java_while_loop.asp) |
+| 01 | [Hello](./Hello) | Cấu trúc class, hàm main và in dữ liệu ra console. | https://www.w3schools.com/java/java_getstarted.asp |
+| 02 | [variable](./variable) | Khai báo biến, hằng số và quy tắc đặt tên camelCase. | https://www.w3schools.com/java/java_variables.asp |
+| 03 | [DataType](./DataType) | Phân biệt kiểu Primitive vs Reference, cơ chế ép kiểu. | https://www.geeksforgeeks.org/data-types-in-java/ |
+| 04 | [Const](./Const) | Cách dùng final và static final cho biến toàn cục. | https://www.w3schools.com/java/java_variables_final.asp |
+| 05 | [Operator](./Operator) | Toán tử số học, logic và độ ưu tiên thực hiện. | https://www.w3schools.com/java/java_operators.asp |
+| 06 | [If-else](./If-else) | Cấu trúc rẽ nhánh đơn, kép và lồng nhau. | https://www.w3schools.com/java/java_conditions.asp |
+| 07 | [Switch-Case](./Switch-Case) | Sử dụng switch-case tối ưu và từ khóa break. | https://www.w3schools.com/java/java_switch.asp |
+| 08 | [for](./for) | Vòng lặp đếm số lần và kỹ thuật lặp lồng (Nested Loops). | https://www.w3schools.com/java/java_for_loop.asp |
+| 09 | [While](./While) | Vòng lặp dựa trên điều kiện và vòng lặp do-while. | https://www.w3schools.com/java/java_while_loop.asp |
 
 ---
 
 ## Tài liệu tham khảo mở rộng
-- [Java Virtual Machine (JVM) internals](https://www.geeksforgeeks.org/jvm-works-jvm-architecture/)
-- [Java Type Casting guide](https://www.w3schools.com/java/java_type_casting.asp)
+- Java Virtual Machine (JVM) internals: https://www.geeksforgeeks.org/jvm-works-jvm-architecture/
+- Java Type Casting guide: https://www.w3schools.com/java/java_type_casting.asp
+- Java Output formatting: https://www.baeldung.com/java-printf

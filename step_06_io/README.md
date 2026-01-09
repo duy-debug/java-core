@@ -1,47 +1,66 @@
 # Step 06: Xử lý ngoại lệ và Hệ thống tập tin (IO & Exception)
 
-Chương này hướng dẫn cách xây dựng các ứng dụng Java ở cấp độ công nghiệp - nơi sự ổn định (Exception) và khả năng lưu trữ (IO) là yếu tố sống còn.
+Chương cuối cùng này trang bị cho bạn hai kỹ năng sống còn của một lập trình viên chuyên nghiệp: Khả năng xây dựng ứng dụng bền bỉ không bị crash (Exception) và khả năng tương tác dữ liệu với thế giới thực (IO).
 
-## Lý thuyết chuyên sâu
+## Lý thuyết chuyên sâu và Đầy đủ
 
-### 1. Phân tích hệ thống Exception trong Java
-Tất cả ngoại lệ đều kế thừa từ lớp `Throwable`.
-- **Error**: Lỗi nghiêm trọng của hệ thống (Out of Memory, Stack Overflow). Không nên dùng try-catch để bắt các lỗi này.
-- **Exception**:
-    - **Checked Exception**: Xảy ra lúc Compile (ví dụ: `IOException`, `SQLException`). Bắt buộc phải dùng `try-catch` hoặc `throws`.
-    - **Unchecked Exception (Runtime)**: Xảy ra lúc chạy do lỗi logic của lập trình viên (ví dụ: `NullPointerException`, `ArrayIndexOutOfBoundsException`).
-- **Try-with-resources (Java 7+)**: Tự động đóng tài nguyên (File, Database) sau khi thực hiện xong mà không cần hàm `finally`.
+### 1. Phân cấp và Bản chất Ngoại lệ (Exception)
+Trong Java, mọi "sự cố" xảy ra khi chương trình đang chạy được gọi là một đối tượng thuộc lớp `Throwable`.
+- **Error**: Các lỗi hệ thống nghiêm trọng (vd: `OutOfMemoryError`, `StackOverflowError`). Lập trình viên thường không bắt các lỗi này vì ứng dụng không thể phục hồi.
+- **Exception**: Các tình huống lỗi mà chương trình có thể xử lý và tiếp tục chạy.
+    - **Checked Exception**: Xảy ra lúc Compile (vd: `FileNotFoundException`, `IOException`). Java bắt buộc bạn phải viết code xử lý (try-catch) hoặc khai báo (throws) mới cho phép biên dịch.
+    - **Unchecked Exception (Runtime)**: Xảy ra lúc chạy do lỗi logic (vd: `NullPointerException`, `ArrayIndexOutOfBoundsException`). Không bắt buộc phải bắt, nhưng nên phòng tránh bằng logic code.
+
+### 2. Cơ chế xử lý Ngoại lệ chuyên sâu
+- **Khối lệnh `try-catch-finally`**:
+    - `try`: Chứa mã nguồn có nguy cơ gây lỗi.
+    - `catch`: Chứa mã xử lý khi lỗi xảy ra. Có thể có nhiều khối `catch` cho các loại lỗi khác nhau (phải đặt lỗi con trước lỗi cha).
+    - `finally`: Chứa mã luôn luôn thực thi dù có lỗi hay không (thường dùng để đóng file, ngắt kết nối database).
+- **Từ khóa `throw` và `throws`**:
+    - `throw`: Dùng để chủ động "ném" ra một đối tượng ngoại lệ (thường dùng trong Custom Exception).
+    - `throws`: Khai báo ở chữ ký phương thức để cảnh báo rằng hàm này có thể gây ra lỗi, đẩy trách nhiệm xử lý lên cho hàm gọi nó.
+- **Try-with-resources (Java 7+)**: Tự động đóng các tài nguyên (file, stream) mà không cần khối `finally`. Đây là cách viết hiện đại và an toàn nhất.
 ```java
-try (FileWriter fw = new FileWriter("test.txt")) {
-    fw.write("Java IO");
-} catch (IOException e) { e.printStackTrace(); }
+try (BufferedReader br = new BufferedReader(new FileReader("data.txt"))) {
+    // Đọc file...
+} catch (IOException e) {
+    e.printStackTrace();
+} // br sẽ tự động được đóng tại đây
 ```
 
-### 2. Luồng dữ liệu (Streams) trong Java IO
-- **Byte Streams (java.io.InputStream / OutputStream)**: Xử lý dữ liệu nhị phân (hình ảnh, âm thanh, file thực thi). Đọc theo đơn vị 8-bit.
-- **Character Streams (java.io.Reader / Writer)**: Xử lý văn bản Unicode. Đọc theo đơn vị 16-bit. Tự động xử lý bảng mã (encoding).
-- **Buffering**: `BufferedReader` và `BufferedWriter` giúp tăng hiệu năng bằng cách đọc/ghi dữ liệu vào một vùng đệm (buffer) trên RAM thay vì truy cập ổ cứng liên tục.
+### 3. Quản lý File và Thư mục (`java.io.File`)
+Lớp `File` đại diện cho một đường dẫn trên ổ cứng (có thể là file hoặc thư mục).
+- **Các lệnh quan trọng**:
+    - `exists()`: Kiểm tra tồn tại.
+    - `createNewFile()`: Tạo file mới.
+    - `mkdir() / mkdirs()`: Tạo thư mục đơn/đa tầng.
+    - `delete()`: Xóa file hoặc thư mục rỗng.
+    - `getAbsolutePath()`: Lấy đường dẫn toàn phần.
+    - `list() / listFiles()`: Liệt kê danh sách file bên trong thư mục.
 
-### 3. Quản lý File hiện đại với `java.nio` (New IO)
-Từ Java 7, lớp `Files` và `Path` cung cấp các tính năng mạnh mẽ hơn:
-- Sao chép file (`Files.copy`).
-- Di chuyển file (`Files.move`).
-- Duyệt cây thư mục (`Files.walk`).
-- Đọc toàn bộ nội dung file vào một List chỉ với 1 dòng lệnh.
+### 4. Hệ thống luồng dữ liệu (Streams)
+Java IO dựa trên khái niệm Streams - dữ liệu chảy theo một chiều (Input là vào, Output là ra).
+- **Byte Streams (0 và 1)**: Dùng cho dữ liệu thô như hình ảnh, âm thanh, file thực thi. Lớp gốc: `InputStream`, `OutputStream`.
+- **Character Streams (Văn bản)**: Dùng cho file text, tự động xử lý bảng mã Unicode. Lớp gốc: `Reader`, `Writer`.
+- **Cơ chế Buffering (Vùng đệm)**: Thay vì truy cập ổ cứng 1000 lần để đọc 1000 ký tự (rất chậm), `BufferedReader` sẽ đọc 1 lần 1000 ký tự vào RAM, sau đó chương trình lấy từ RAM ra (nhanh hơn hàng trăm lần).
 
-### 4. Kỹ thuật Debug với Exception
-- **printStackTrace()**: In ra toàn bộ dấu vết các hàm đã gọi dẫn đến lỗi.
-- **Custom Exception**: Tự tạo lớp lỗi riêng (kế thừa từ `Exception`) để xử lý các nghiệp vụ đặc thù (Ví dụ: `InsufficientBalanceException` cho ứng dụng ngân hàng).
+### 5. Java NIO (New IO) - Cách tiếp cận hiện đại
+Từ Java 7, lớp `java.nio.file.Files` và `Path` cung cấp các tính năng mạnh mẽ hơn IO cũ:
+- Ghi/Đọc toàn bộ file chỉ bằng 1 dòng lệnh.
+- Sao chép, di chuyển file cực nhanh.
+- Kiểm tra chi tiết thuộc tính file (size, owner, permissions).
 
 ## Danh sách bài học
 
 | STT | Tên bài | Mô tả chi tiết | Tham khảo |
 |:---:|:---|:---|:---|
-| 01 | [XuLyNgoaiLe](./XuLyNgoaiLe) | Phân cấp Throwable, Catch đa tầng và Custom Exception. | [W3Schools](https://www.w3schools.com/java/java_try_catch.asp) |
-| 02 | [Tao-Tap-Tin-Thu-Muc](./Tao-Tap-Tin-Thu-Muc) | Thao tác toàn diện với File system và Luồng dữ liệu (Streams). | [W3Schools](https://www.w3schools.com/java/java_files.asp) |
+| 01 | [XuLyNgoaiLe](./XuLyNgoaiLe) | Làm chủ chu trình try-catch, cách tạo Custom Exception và chiến lược xử lý lỗi chuyên nghiệp. | https://www.w3schools.com/java/java_try_catch.asp |
+| 02 | [Tao-Tap-Tin-Thu-Muc](./Tao-Tap-Tin-Thu-Muc) | Thực hành thao tác với hệ thống tập tin, luồng Byte/Character và tối ưu hiệu suất với BufferedReader. | https://www.w3schools.com/java/java_files.asp |
 
 ---
 
 ## Tài liệu tham khảo mở rộng
-- [Detailed Guide on Java IO vs NIO](https://www.baeldung.com/java-io-vs-nio)
-- [Best Practices for Exception Handling](https://www.geeksforgeeks.org/best-practices-for-exception-handling-in-java/)
+- Java Exceptions Hierarchy: https://www.geeksforgeeks.org/exceptions-in-java/
+- Comprehensive Guide to Java IO: https://www.baeldung.com/java-io-streams
+- Try-with-resources explanation: https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
+- Java NIO vs IO Performance: https://www.javatpoint.com/java-nio-vs-io
