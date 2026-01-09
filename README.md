@@ -11,11 +11,11 @@ Dự án này chứa lộ trình học lập trình Java từ cơ bản đến n
 - [Step 05: Collection và Generic](#step-05-collection-và-generic)
 - [Step 06: Ngoại lệ và Tương tác File](#step-06-ngoại-lệ-và-tương-tác-file)
 - [Hướng dẫn cài đặt IntelliJ IDEA và Chạy Project](#hướng-dẫn-cài-đặt-intellij-idea-và-chạy-project)
-- [Tài liệu tham khảo học tập](#tài-liệu-tham-khao-học-tập)
+- [Tài liệu tham khảo học tập](#tài-liệu-tham-khảo-học-tập)
 
 ---
 
-### Step 01: Nền tảng Java
+### [Step 01: Nền tảng Java](./step_01_basic/README.md)
 Tập trung vào cú pháp, biến, kiểu dữ liệu và các cấu trúc điều khiển (vòng lặp, câu lệnh điều kiện).
 
 | STT | Tên bài | Mô tả |
@@ -30,7 +30,7 @@ Tập trung vào cú pháp, biến, kiểu dữ liệu và các cấu trúc đi�
 | 08 | [for](./step_01_basic/for) | Vòng lặp for cơ bản. |
 | 09 | [While](./step_01_basic/While) | Vòng lặp while và do-while. |
 
-### Step 02: Mảng và Tiện ích
+### [Step 02: Mảng và Tiện ích](./step_02_array/README.md)
 Cách quản lý tập hợp dữ liệu đơn giản, xử lý toán học và thời gian.
 
 | STT | Tên bài | Mô tả |
@@ -42,7 +42,7 @@ Cách quản lý tập hợp dữ liệu đơn giản, xử lý toán học và 
 | 05 | [Time-Date-Dateformat-Calendar](./step_02_array/Time-Date-Dateformat-Calendar) | Quản lý và định dạng thời gian. |
 | 06 | [MiniGame-Random-Numberformat](./step_02_array/MiniGame-Random-Numberformat) | Bài tập thực hành tổng hợp. |
 
-### Step 03: Hướng đối tượng cơ bản
+### [Step 03: Hướng đối tượng cơ bản](./step_03_basic/README.md)
 Làm quen với các khái niệm Class, Object, Encapsulation và các dự án thực tế.
 
 | STT | Tên bài | Mô tả |
@@ -57,7 +57,7 @@ Làm quen với các khái niệm Class, Object, Encapsulation và các dự án
 | 08 | [OOP-QuanLyBoPhim](./step_03_basic/OOP-QuanLyBoPhim) | Dự án quản lý bộ phim. |
 | 09 | [OOP-QuanLySinhVien](./step_03_basic/OOP-QuanLySinhVien) | Dự án quản lý sinh viên. |
 
-### Step 04: Hướng đối tượng nâng cao
+### [Step 04: Hướng đối tượng nâng cao](./step_04_advanced/README.md)
 Đi sâu vào các tính chất của OOP: Kế thừa, Đa hình, Trừu tượng và xử lý Chuỗi (String).
 
 | STT | Tên bài | Mô tả |
@@ -78,7 +78,7 @@ Làm quen với các khái niệm Class, Object, Encapsulation và các dự án
 | 14 | [Phan-Tach-Chuoi-Thanh-Mang](./step_04_advanced/Phan-Tach-Chuoi-Thanh-Mang) | Sử dụng split để tách chuỗi. |
 | 15 | [Enum](./step_04_advanced/Enum) | Kiểu dữ liệu liệt kê Enum. |
 
-### Step 05: Collection và Generic
+### [Step 05: Collection và Generic](./step_05_collection/README.md)
 Cấu trúc dữ liệu nâng cao như ArrayList, Stack, Queue, Set và kỹ thuật Generic.
 
 | STT | Tên bài | Mô tả |
@@ -90,7 +90,7 @@ Cấu trúc dữ liệu nâng cao như ArrayList, Stack, Queue, Set và kỹ thu
 | 05 | [SET](./step_05_collection/SET) | Cấu trúc dữ liệu Tập hợp (Set). |
 | 06 | [compareTo-Comparable](./step_05_collection/compareTo-Comparable) | So sánh và sắp xếp đối tượng. |
 
-### Step 06: Ngoại lệ và Tương tác File
+### [Step 06: Ngoại lệ và Tương tác File](./step_06_io/README.md)
 Cách xử lý lỗi (Exception Handling) và tương tác với hệ thống tập tin.
 
 | STT | Tên bài | Mô tả |
